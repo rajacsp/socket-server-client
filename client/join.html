@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello WebSocket</title>
+    
+    
+    <script src="assets/jquery.min.js"></script>
+</head>
+<body>
+
+
+    <div>
+        <button id="update">Update</button>
+    </div>
+
+    <div>
+
+        <span id="time_left_span">
+            time left
+        </span>
+
+    </div>
+
+    <input type="button" value="Extend Time" id="extend_time_button" />
+
+    <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
+
+<script>
+
+
+$(document).ready(function () {
+
+    var BASE_API_URL = 'http://localhost:3002';
+
+    var socket = io(BASE_API_URL);
+
+    function print(obj){
+        console.log(obj);
+    }
+
+    socket.on('connect', function(){
+        print('socket connected');
+    });
+
+    // listen to the socket-server
+    socket.on('event', function(data){
+        print('event : '+JSON.stringify(data));
+    });
+
+    socket.on('disconnect', function(){
+        socket.emit('end');
+    });
+
+});
+
+    </script>
+</body>
+</html>
