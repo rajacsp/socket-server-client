@@ -4,7 +4,9 @@
 ## How to run the server?
 
 cd server
+
 npm install
+
 npm start
     (it will run on port 3002)
 
