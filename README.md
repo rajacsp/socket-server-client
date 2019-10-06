@@ -8,6 +8,7 @@ cd server
 npm install
 
 npm start
+
     (it will run on port 3002)
 
 
